@@ -1,15 +1,15 @@
 # Proyecto: Visualizador Interactivo de Datos CSV
 
-Este proyecto es una aplicación web simple creada con **Streamlit** para visualizar datos de un archivo `.csv` de manera interactiva. Permite al usuario:
+Este proyecto es una aplicación web simple desarrollada con Streamlit para visualizar y explorar datos almacenados en archivos `.csv`. Ofrece una interfaz amigable que permite:
 
 - Ver el dataset completo
-- Filtrar por ciudad
-- Generar un histograma de edades
-- Visualizar los datos directamente desde el navegador  
+- Filtrar por columna (por ejemplo, ciudad)
+- Generar histogramas (como el de edades)
+- Visualizar los datos directamente desde el navegador
 
 ---
 
-## Tecnologías usadas
+## Tecnologías utilizadas
 
 - Python 3.11+
 - Streamlit 1.35.0
@@ -18,12 +18,24 @@ Este proyecto es una aplicación web simple creada con **Streamlit** para visual
 
 ---
 
+## Archivos principales
+
+- `app.py`: Script principal de la aplicación Streamlit.
+- `requirements.txt`: Lista de dependencias necesarias para ejecutar la app.
+
+---
+
 ## Cómo ejecutarlo
 
-1. Instala las dependencias:
+1. Instala las dependencias necesarias:
 
 ```bash
 pip install -r requirements.txt
 
-2.  Ejecucion facil
-python -m streamlit run app.py
+## Cómo ejecutarlo
+
+1. Instala las dependencias necesarias:
+
+```bash
+pip install -r requirements.txt
+
