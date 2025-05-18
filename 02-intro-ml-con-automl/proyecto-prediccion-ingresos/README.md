@@ -1,10 +1,10 @@
-# 📈 Proyecto: Predicción de Ingresos con Logistic Regression
+# Proyecto: Predicción de Ingresos con Logistic Regression
 
-Este proyecto aplica un modelo de regresión logística para predecir si una persona gana más de **$50,000** al año, usando variables demográficas del dataset `adult.csv`.
+Este proyecto aplica un modelo de regresión logística para predecir si una persona gana más de $50,000 al año, usando variables demográficas del dataset `adult.csv`.
 
 ---
 
-## 📂 Archivos
+## Archivos
 
 - `adult.csv`: Dataset de entrada.
 - `modelo.ipynb`: Notebook con el código completo y análisis paso a paso.
@@ -12,7 +12,7 @@ Este proyecto aplica un modelo de regresión logística para predecir si una per
 
 ---
 
-## 🛠️ Tecnologías usadas
+## Tecnologías usadas
 
 - Python 3.11+
 - pandas, numpy
@@ -21,7 +21,7 @@ Este proyecto aplica un modelo de regresión logística para predecir si una per
 
 ---
 
-## 🧠 Flujo del proyecto
+## Flujo del proyecto
 
 1. Carga y limpieza del dataset
 2. Codificación de variables categóricas
@@ -36,11 +36,11 @@ Este proyecto aplica un modelo de regresión logística para predecir si una per
 
 ---
 
-## ✅ Resultados
+## Resultados
 
 El modelo logra una precisión satisfactoria y una buena interpretación visual a través de la matriz de confusión.  
-⚠️ Asegurarse de tener suficientes muestras por clase si se usa validación cruzada.
+Nota: Asegurarse de tener suficientes muestras por clase si se usa validación cruzada.
 
 ---
 
-📌 Este proyecto forma parte de mi portafolio personal de aprendizaje en **Machine Learning**.
+Este proyecto forma parte de mi portafolio personal de aprendizaje en Machine Learning.
