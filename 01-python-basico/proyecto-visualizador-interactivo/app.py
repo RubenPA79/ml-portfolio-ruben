@@ -1,28 +1,38 @@
 import streamlit as st
 import pandas as pd
 import matplotlib.pyplot as plt
+import io
 
-# Título
-st.title(" Visualizador Interactivo de Datos CSV")
+st.title("Visualizador Interactivo de CSV")
 
-# Cargar CSV
-df = pd.read_csv("datos.csv")
+# Cargar archivo CSV de forma dinámica
+archivo_csv = st.file_uploader("Selecciona un archivo CSV", type=["csv"])
 
-# Mostrar el DataFrame completo
-st.subheader(" Vista previa de los datos")
-st.dataframe(df)
+if archivo_csv is not None:
+    try:
+        df = pd.read_csv(archivo_csv)
+        st.success("Archivo CSV cargado correctamente.\n")
 
-# Filtro por ciudad
-ciudades = df["ciudad"].unique()
-ciudad_seleccionada = st.selectbox("Selecciona una ciudad:", ciudades)
-df_filtrado = df[df["ciudad"] == ciudad_seleccionada]
+        st.subheader("Vista previa del dataset")
+        st.dataframe(df)
 
-# Mostrar datos filtrados
-st.subheader(f" Datos de {ciudad_seleccionada}")
-st.write(df_filtrado)
+        st.subheader("Información general del dataset")
+        buffer = io.StringIO()
+        df.info(buf=buffer)
+        st.text(buffer.getvalue())
 
-# Histograma de edades
-st.subheader(" Distribución de edades")
-fig, ax = plt.subplots()
-df["edad"].hist(ax=ax, bins=5, color="skyblue", edgecolor="black")
-st.pyplot(fig)
+        st.subheader("Estadísticas descriptivas")
+        st.write(df.describe(include="all"))
+
+        # 🔥 Gráfico dinámico
+        st.subheader("Visualización por columna")
+        columna = st.selectbox("Selecciona una columna para analizar", df.columns)
+
+        if pd.api.types.is_numeric_dtype(df[columna]):
+            st.bar_chart(df[columna].value_counts().sort_index())
+        else:
+            st.bar_chart(df[columna].value_counts())
+
+    except Exception as e:
+        st.error("Ocurrió un error al procesar el archivo:")
+        st.error(str(e))

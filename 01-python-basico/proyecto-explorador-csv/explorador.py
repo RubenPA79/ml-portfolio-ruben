@@ -1,31 +1,36 @@
 import pandas as pd
-import matplotlib.pyplot as plt
+import os
+import sys
 
-# 1. Cargar datos
-df = pd.read_csv("datos.csv")
+archivo_csv = "datos.csv"
+ruta_script = os.path.dirname(os.path.abspath(__file__))
+ruta_archivo = os.path.join(ruta_script, archivo_csv)
 
-# 2. Mostrar primeras filas
-print(" Vista previa de los datos:")
-print(df.head())
+print("Explorador de CSV - Carga automática desde la carpeta del script\n")
 
-# 3. Mostrar estadísticas
-print("\n Estadísticas básicas:")
-print(df.describe())
+if not os.path.isfile(ruta_archivo):
+    print(f"ERROR: No se encontró el archivo '{archivo_csv}'")
+    print(f"Ruta esperada: {ruta_archivo}")
+    sys.exit(1)
 
-# 4. Filtrar: Ejemplo → columna 'edad' > 30
-df_filtrado = df[df["edad"] > 30]
-print("\n Datos filtrados (edad > 30):")
-print(df_filtrado)
+try:
+    try:
+        df = pd.read_csv(ruta_archivo, encoding='utf-8')
+    except UnicodeDecodeError:
+        df = pd.read_csv(ruta_archivo, encoding='latin-1')
 
-# 5. Guardar resultados
-df_filtrado.to_csv("resultados.csv", index=False)
-print("\n Resultados guardados en 'resultados.csv'")
+    print(f"\nArchivo '{archivo_csv}' cargado correctamente.\n")
+    print("Vista previa del contenido:")
+    print(df.head(), "\n")
 
-# Gráfico de barras: cantidad de personas por ciudad
-df["ciudad"].value_counts().plot(kind="bar")
-plt.title("Cantidad de personas por ciudad")
-plt.xlabel("Ciudad")
-plt.ylabel("Frecuencia")
-plt.tight_layout()
-plt.savefig("grafico.png")
-plt.show()
+    print("Información general:")
+    df.info()
+    print("\n")
+
+    print("Estadísticas descriptivas:")
+    print(df.describe(include='all'))
+
+except Exception as e:
+    print("\nOcurrió un error al leer el archivo:")
+    print(str(e))
+
