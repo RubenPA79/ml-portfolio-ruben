@@ -57,7 +57,7 @@ pip install -r requirements-dev.txt
 Estoy abierto a colaboraciones y nuevas oportunidades.
 
 - **GitHub**: [@RubenPA79](https://github.com/RubenPA79)
-- **Email**: [Tu Email Aquí]
+- **Email**: pajonarias@gmail.com
 - **LinkedIn**: [Tu LinkedIn Aquí]
 
 ---
